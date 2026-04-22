@@ -16,6 +16,16 @@ export const REGIME_META: Record<InflationRegime, {
   deflation_risk:   { label: '通缩风险',   color: 'text-blue-400',   bg: 'bg-blue-500/15 border-blue-500/30', dot: 'bg-blue-500', emoji: '🔵' },
 };
 
+// ───────── 市场锚点 (四资产当日真实价格) ─────────
+export interface MarketAnchors {
+  as_of: string;
+  gold: number;       // spot $/oz
+  dxy: number;        // US Dollar Index
+  spx: number;        // S&P 500 close
+  ust10y: number;     // 10Y yield, % (e.g. 4.28)
+  note?: string;
+}
+
 // ───────── 综合评分 ─────────
 export interface InflationScore {
   as_of: string;

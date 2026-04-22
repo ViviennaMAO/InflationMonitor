@@ -1,9 +1,9 @@
 'use client';
 import Link from 'next/link';
 import { REGIME_META } from '@/types';
-import type { InflationScore } from '@/types';
+import type { InflationScore, MarketAnchors } from '@/types';
 
-export function Header({ score }: { score: InflationScore }) {
+export function Header({ score, anchors }: { score: InflationScore; anchors?: MarketAnchors }) {
   const meta = REGIME_META[score.regime];
   return (
     <header className="sticky top-0 z-50 bg-[#0a0e1a]/95 border-b border-slate-800 backdrop-blur-sm">
@@ -25,6 +25,18 @@ export function Header({ score }: { score: InflationScore }) {
             {score.as_of} · 16:00 ET
           </span>
         </div>
+
+        {/* Market Anchors strip */}
+        {anchors && (
+          <div className="flex items-center gap-3 h-8 border-t border-slate-800/60 flex-wrap text-[10px] font-mono">
+            <span className="text-slate-600 uppercase tracking-widest">今日市场</span>
+            <AnchorPill label="XAU" value={`$${anchors.gold.toFixed(0)}`} color="text-amber-400" />
+            <AnchorPill label="DXY" value={anchors.dxy.toFixed(2)} color="text-sky-400" />
+            <AnchorPill label="SPX" value={anchors.spx.toFixed(0)} color="text-emerald-400" />
+            <AnchorPill label="10Y" value={`${anchors.ust10y.toFixed(2)}%`} color="text-rose-400" />
+            <span className="text-slate-600 text-[9px] ml-auto">{anchors.note || anchors.as_of}</span>
+          </div>
+        )}
 
         {/* Row 2 */}
         <div className="flex items-center gap-4 h-12 border-t border-slate-800/60 flex-wrap">
@@ -61,6 +73,15 @@ export function Header({ score }: { score: InflationScore }) {
         </div>
       </div>
     </header>
+  );
+}
+
+function AnchorPill({ label, value, color }: { label: string; value: string; color: string }) {
+  return (
+    <span className="flex items-center gap-1.5">
+      <span className="text-slate-500">{label}</span>
+      <span className={`${color} font-semibold`}>{value}</span>
+    </span>
   );
 }
 

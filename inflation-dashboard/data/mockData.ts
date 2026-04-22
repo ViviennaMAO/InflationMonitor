@@ -1,13 +1,27 @@
 import type {
+  MarketAnchors,
   InflationScore, ComponentDetail, AssetSignalBundle, ScenarioBundle,
   InflationDiagnosis, FomcBundle, FiscalBundle, NarrativeBundle,
   PriceDecompEntry, ExpectationsBundle, InflationHistoryEntry,
   SignalTimelineEntry, EventWindow,
 } from '@/types';
 
+// ───────── 市场锚点 (今日真实市场值) ─────────
+// Hardcoded fallback for when pipeline hasn't run with live data yet.
+// GitHub Actions refreshes pipeline/*.json daily — this keeps UI honest
+// when pipeline JSON is stale or absent.
+export const mockMarketAnchors: MarketAnchors = {
+  as_of: '2026-04-22',
+  gold: 4767,
+  dxy: 98.03,
+  spx: 7115,
+  ust10y: 4.28,
+  note: '2026-04-22 收盘',
+};
+
 // ───────── IPS 综合评分 ─────────
 export const mockScore: InflationScore = {
-  as_of: '2026-04-21',
+  as_of: '2026-04-22',
   pi: 62,
   regime: 'sticky_inflation',
   components: { P: 58, E: 52, D: 68, F: 74, N: 65 },
@@ -105,7 +119,7 @@ export const mockComponents: ComponentDetail[] = [
 
 // ───────── 四资产信号 ─────────
 export const mockAssets: AssetSignalBundle = {
-  as_of: '2026-04-21',
+  as_of: '2026-04-22',
   pi_score: 62,
   regime: 'sticky_inflation',
   assets: [
@@ -158,7 +172,7 @@ export const mockAssets: AssetSignalBundle = {
 
 // ───────── 通胀体制诊断 ─────────
 export const mockDiagnosis: InflationDiagnosis = {
-  as_of: '2026-04-21',
+  as_of: '2026-04-22',
   dominant_type: 'wage_price',
   dominant_weight: 0.42,
   breakdown: [
@@ -175,7 +189,7 @@ export const mockDiagnosis: InflationDiagnosis = {
 
 // ───────── 四情景剧本 ─────────
 export const mockScenarios: ScenarioBundle = {
-  as_of: '2026-04-21',
+  as_of: '2026-04-22',
   current_regime: 'sticky_inflation',
   transition_next_month: {
     reflation_surge: 0.15,
@@ -346,7 +360,7 @@ export const mockFomc: FomcBundle = {
     { date: '2026-03-31', score: +1, ma5: 1.0 },
     { date: '2026-04-07', score:  0, ma5: 0.6 },
     { date: '2026-04-14', score: +1, ma5: 0.6 },
-    { date: '2026-04-21', score: +1, ma5: 0.8 },
+    { date: '2026-04-22', score: +1, ma5: 0.8 },
   ],
   timeline: [
     {
@@ -489,6 +503,7 @@ export const mockHistory: InflationHistoryEntry[] = Array.from({ length: 90 }, (
 
 // ───────── 信号时间线 ─────────
 export const mockSignalTimeline: SignalTimelineEntry[] = [
+  { date: '2026-04-22', pi: 62, regime: 'sticky_inflation', delta_label: '↔', note: '市场: 黄金 $4767 · DXY 98.03 · SPX 7115 · 10Y 4.28%' },
   { date: '2026-04-21', pi: 62, regime: 'sticky_inflation', delta_label: '↑', note: 'Core CPI 3.8%，服务项 3m 年化 +0.3pp' },
   { date: '2026-04-15', pi: 60, regime: 'sticky_inflation', delta_label: '↑', note: 'Waller 发言偏鹰，鹰鸽指数走高' },
   { date: '2026-04-10', pi: 58, regime: 'sticky_inflation', delta_label: '↓', note: 'PPI 温和，短期驱动回落' },
@@ -502,7 +517,7 @@ export const mockSignalTimeline: SignalTimelineEntry[] = [
 export const mockEventWindow: EventWindow = {
   active: true,
   next_event: 'CPI · 2026-05-14',
-  days_until: 23,
+  days_until: 22,
   type: 'cpi',
-  message: '距下次 CPI 披露 23 天。历史规律：发布前 3 日通胀敏感资产波动率 +40%。',
+  message: '距下次 CPI 披露 22 天。历史规律：发布前 3 日通胀敏感资产波动率 +40%。',
 };

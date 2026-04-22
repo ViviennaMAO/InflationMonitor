@@ -5,6 +5,11 @@ Page({
   data: {
     loading: true,
     error: '',
+    // market anchors (今日真实市场)
+    anchorGold: '--',
+    anchorDxy: '--',
+    anchorSpx: '--',
+    anchorUst: '--',
     // header
     asOf: '--',
     pi: '--',
@@ -34,10 +39,11 @@ Page({
   async loadData() {
     this.setData({ loading: true, error: '' })
     try {
-      const [score, assets, diag] = await Promise.all([
+      const [score, assets, diag, anchors] = await Promise.all([
         api.fetchScore(),
         api.fetchAssets(),
         api.fetchDiagnosis(),
+        api.fetchMarketAnchors().catch(() => null),
       ])
 
       // Components stacked bars
@@ -97,6 +103,10 @@ Page({
 
       this.setData({
         loading: false,
+        anchorGold: anchors ? '$' + Math.round(anchors.gold) : '--',
+        anchorDxy: anchors ? Number(anchors.dxy).toFixed(2) : '--',
+        anchorSpx: anchors ? String(Math.round(anchors.spx)) : '--',
+        anchorUst: anchors ? Number(anchors.ust10y).toFixed(2) + '%' : '--',
         asOf: score.as_of || '--',
         pi: u.formatNumber(score.pi, 1),
         piClass: u.regimeColor(score.regime) ? '' : 'text-gold',

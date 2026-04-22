@@ -21,6 +21,15 @@
         <text class="{{delta1dClass}} text-xs font-mono">{{delta1d}}</text>
         <view class="badge {{regimeBadgeClass}}" style="margin-left:auto;">{{regimeEmoji}} {{regimeLabel}}</view>
       </view>
+
+      <!-- Market anchors strip -->
+      <view class="flex items-center" style="margin-top:14rpx; padding-top:14rpx; border-top:1rpx solid rgba(255,255,255,0.06); gap:18rpx; flex-wrap:wrap;">
+        <text class="text-dim text-xs" style="letter-spacing:2rpx;">今日市场</text>
+        <view class="flex items-center" style="gap:4rpx;"><text class="text-xs text-dim">XAU</text><text class="text-amber text-xs font-mono font-bold">{{anchorGold}}</text></view>
+        <view class="flex items-center" style="gap:4rpx;"><text class="text-xs text-dim">DXY</text><text class="text-sky text-xs font-mono font-bold">{{anchorDxy}}</text></view>
+        <view class="flex items-center" style="gap:4rpx;"><text class="text-xs text-dim">SPX</text><text class="text-green text-xs font-mono font-bold">{{anchorSpx}}</text></view>
+        <view class="flex items-center" style="gap:4rpx;"><text class="text-xs text-dim">10Y</text><text class="text-rose text-xs font-mono font-bold">{{anchorUst}}</text></view>
+      </view>
     </view>
 
     <!-- Four-asset signal tower -->

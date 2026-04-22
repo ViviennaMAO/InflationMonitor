@@ -12,7 +12,7 @@ import { SignalTimeline } from '@/components/cards/SignalTimeline';
 import { InflationHistory } from '@/components/charts/InflationHistory';
 import {
   useScore, useComponents, useAssets, useScenarios, useDiagnosis,
-  useFomc, useHistory, useSignalTimeline, useEventWindow,
+  useFomc, useHistory, useSignalTimeline, useEventWindow, useMarketAnchors,
 } from '@/lib/useInflationData';
 
 function LiveIndicator({ loading }: { loading: boolean }) {
@@ -34,10 +34,11 @@ export default function Dashboard() {
   const { data: history } = useHistory();
   const { data: signalTimeline } = useSignalTimeline();
   const { data: eventWindow } = useEventWindow();
+  const { data: marketAnchors } = useMarketAnchors();
 
   return (
     <div className="min-h-screen bg-[#0a0e1a] flex flex-col">
-      <Header score={score} />
+      <Header score={score} anchors={marketAnchors} />
 
       <main className="flex-1 max-w-screen-2xl mx-auto w-full px-4 sm:px-6 py-6 space-y-6">
         <div className="flex justify-end">

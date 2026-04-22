@@ -28,5 +28,6 @@ module.exports = {
   fetchFiscal:       () => request('/fiscal'),
   fetchNarrative:    () => request('/narrative'),
   fetchEventWindow:  () => request('/event-window'),
+  fetchMarketAnchors:() => request('/market-anchors'),
   fetchSignalTimeline: () => request('/signal-timeline'),
 }

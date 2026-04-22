@@ -1,12 +1,14 @@
 'use client';
 import useSWR from 'swr';
 import type {
+  MarketAnchors,
   InflationScore, ComponentDetail, AssetSignalBundle, ScenarioBundle,
   InflationDiagnosis, FomcBundle, FiscalBundle, NarrativeBundle,
   PriceDecompEntry, ExpectationsBundle, InflationHistoryEntry,
   SignalTimelineEntry, EventWindow,
 } from '@/types';
 import {
+  mockMarketAnchors,
   mockScore, mockComponents, mockAssets, mockScenarios, mockDiagnosis,
   mockFomc, mockFiscal, mockNarrative, mockPriceDecomp, mockExpectations,
   mockHistory, mockSignalTimeline, mockEventWindow,
@@ -73,6 +75,11 @@ export function useHistory() {
 export function useSignalTimeline() {
   const { data, isLoading } = useSWR<SignalTimelineEntry[]>('/api/signal-timeline', fetcher, { refreshInterval: REFRESH });
   return { data: data ?? mockSignalTimeline, isLoading };
+}
+
+export function useMarketAnchors() {
+  const { data, isLoading } = useSWR<MarketAnchors>('/api/market-anchors', fetcher, { refreshInterval: REFRESH });
+  return { data: data ?? mockMarketAnchors, isLoading };
 }
 
 export function useEventWindow() {
