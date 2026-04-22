@@ -1,0 +1,318 @@
+[
+  {
+    "key": "P",
+    "label": "Price Levels",
+    "label_zh": "价格水平",
+    "score": 53.0,
+    "weight": 0.25,
+    "headline": "Core CPI 仍高于目标，服务与住房粘性顽固",
+    "sub_factors": [
+      {
+        "key": "cpi",
+        "label": "CPI YoY",
+        "value": 3.2,
+        "unit": "%",
+        "weight": 0.2,
+        "score": 53.3,
+        "tone": "neutral"
+      },
+      {
+        "key": "core_cpi",
+        "label": "Core CPI YoY",
+        "value": 3.8,
+        "unit": "%",
+        "weight": 0.25,
+        "score": 63.3,
+        "tone": "neutral"
+      },
+      {
+        "key": "pce",
+        "label": "PCE YoY",
+        "value": 2.9,
+        "unit": "%",
+        "weight": 0.15,
+        "score": 48.3,
+        "tone": "neutral"
+      },
+      {
+        "key": "core_pce",
+        "label": "Core PCE YoY",
+        "value": 3.3,
+        "unit": "%",
+        "weight": 0.2,
+        "score": 55.0,
+        "tone": "neutral"
+      },
+      {
+        "key": "ppi",
+        "label": "PPI YoY",
+        "value": 2.1,
+        "unit": "%",
+        "weight": 0.1,
+        "score": 39.2,
+        "tone": "neutral"
+      },
+      {
+        "key": "truflation",
+        "label": "Truflation",
+        "value": 2.6,
+        "unit": "%",
+        "weight": 0.1,
+        "score": 43.3,
+        "tone": "neutral"
+      }
+    ],
+    "annotation": "Headline CPI 受能源拖累回落，但 Core 持续高于目标，服务项 3m 年化 3.2%。"
+  },
+  {
+    "key": "E",
+    "label": "Expectations",
+    "label_zh": "通胀预期",
+    "score": 49.3,
+    "weight": 0.2,
+    "headline": "长期 BEI 锚定良好，短期 Michigan 有上行风险",
+    "sub_factors": [
+      {
+        "key": "bei5",
+        "label": "5Y BEI",
+        "value": 2.35,
+        "unit": "%",
+        "weight": 0.25,
+        "score": 45.0,
+        "tone": "neutral"
+      },
+      {
+        "key": "bei10",
+        "label": "10Y BEI",
+        "value": 2.4,
+        "unit": "%",
+        "weight": 0.25,
+        "score": 46.7,
+        "tone": "neutral"
+      },
+      {
+        "key": "fwd5y5y",
+        "label": "5Y5Y Forward",
+        "value": 2.45,
+        "unit": "%",
+        "weight": 0.2,
+        "score": 47.5,
+        "tone": "neutral"
+      },
+      {
+        "key": "mich1y",
+        "label": "Michigan 1Y",
+        "value": 3.8,
+        "unit": "%",
+        "weight": 0.15,
+        "score": 56.0,
+        "tone": "neutral"
+      },
+      {
+        "key": "spf10",
+        "label": "SPF 10Y Core PCE",
+        "value": 2.2,
+        "unit": "%",
+        "weight": 0.1,
+        "score": 60.0,
+        "tone": "neutral"
+      },
+      {
+        "key": "sep_long",
+        "label": "Fed SEP 长期",
+        "value": 2.0,
+        "unit": "%",
+        "weight": 0.05,
+        "score": 50.0,
+        "tone": "neutral"
+      }
+    ],
+    "annotation": "预期仍然 well-anchored，但 Michigan 家庭端有脱锚迹象需警惕。"
+  },
+  {
+    "key": "D",
+    "label": "Drivers",
+    "label_zh": "驱动因子",
+    "score": 54.2,
+    "weight": 0.2,
+    "headline": "油价 + 工资双推升，住房粘性延后回落",
+    "sub_factors": [
+      {
+        "key": "wti",
+        "label": "WTI YoY",
+        "value": 43.88,
+        "unit": "%",
+        "weight": 0.2,
+        "score": 82.1,
+        "tone": "push"
+      },
+      {
+        "key": "crb",
+        "label": "CRB YoY",
+        "value": 9.0,
+        "unit": "%",
+        "weight": 0.15,
+        "score": 48.3,
+        "tone": "neutral"
+      },
+      {
+        "key": "wage",
+        "label": "AHE YoY",
+        "value": 4.1,
+        "unit": "%",
+        "weight": 0.2,
+        "score": 52.5,
+        "tone": "neutral"
+      },
+      {
+        "key": "rent",
+        "label": "Zillow Rent YoY",
+        "value": 4.8,
+        "unit": "%",
+        "weight": 0.2,
+        "score": 48.0,
+        "tone": "neutral"
+      },
+      {
+        "key": "dxy",
+        "label": "DXY YoY",
+        "value": -0.56,
+        "unit": "%",
+        "weight": 0.1,
+        "score": 62.2,
+        "tone": "neutral"
+      },
+      {
+        "key": "gscpi",
+        "label": "NY Fed GSCPI",
+        "value": -0.3,
+        "unit": "",
+        "weight": 0.15,
+        "score": 28.3,
+        "tone": "suppress"
+      }
+    ],
+    "annotation": "供应链压力指数中性，但工资—房租传导链尚未断裂。"
+  },
+  {
+    "key": "F",
+    "label": "Fiscal Impulse",
+    "label_zh": "财政脉冲",
+    "score": 64.6,
+    "weight": 0.15,
+    "headline": "赤字高位，TGA 释放叠加发债扩张",
+    "sub_factors": [
+      {
+        "key": "deficit_gdp_pct",
+        "label": "赤字/GDP",
+        "value": 6.3,
+        "unit": "%",
+        "weight": 0.3,
+        "score": 78.8,
+        "tone": "push"
+      },
+      {
+        "key": "spending_yoy",
+        "label": "财政支出 YoY",
+        "value": 8.5,
+        "unit": "%",
+        "weight": 0.2,
+        "score": 56.7,
+        "tone": "neutral"
+      },
+      {
+        "key": "net_issuance_b",
+        "label": "净发债 (M)",
+        "value": 1800,
+        "unit": "B",
+        "weight": 0.15,
+        "score": 72.0,
+        "tone": "push"
+      },
+      {
+        "key": "tga_delta_b",
+        "label": "TGA Δ",
+        "value": -220,
+        "unit": "B",
+        "weight": 0.15,
+        "score": 72.0,
+        "tone": "push"
+      },
+      {
+        "key": "fiscal_mult",
+        "label": "财政乘数",
+        "value": 0.9,
+        "unit": "",
+        "weight": 0.1,
+        "score": 40.0,
+        "tone": "neutral"
+      },
+      {
+        "key": "reconcil",
+        "label": "税改/调解脉冲",
+        "value": 0.4,
+        "unit": "",
+        "weight": 0.1,
+        "score": 40.0,
+        "tone": "neutral"
+      }
+    ],
+    "annotation": "财政\"暗刺激\"仍在运行——单看货币视角会低估通胀韧性。"
+  },
+  {
+    "key": "N",
+    "label": "Narrative / Policy Reflection",
+    "label_zh": "叙事+政策反射",
+    "score": 67.8,
+    "weight": 0.2,
+    "headline": "鹰鸽转中性偏鹰，叙事热度回升",
+    "sub_factors": [
+      {
+        "key": "hawkdove_ma5",
+        "label": "FOMC 鹰鸽 MA5",
+        "value": 0.6,
+        "unit": "",
+        "weight": 0.3,
+        "score": 65.0,
+        "tone": "push"
+      },
+      {
+        "key": "market_cut_pricing",
+        "label": "市场隐含降息次数",
+        "value": 2.1,
+        "unit": "",
+        "weight": 0.25,
+        "score": 65.0,
+        "tone": "push"
+      },
+      {
+        "key": "narrative_index",
+        "label": "媒体通胀指数",
+        "value": 72,
+        "unit": "",
+        "weight": 0.2,
+        "score": 72.0,
+        "tone": "push"
+      },
+      {
+        "key": "search_trends",
+        "label": "Google Trends",
+        "value": 68,
+        "unit": "",
+        "weight": 0.15,
+        "score": 68.0,
+        "tone": "push"
+      },
+      {
+        "key": "social_sentiment",
+        "label": "社媒情绪",
+        "value": 0.25,
+        "unit": "",
+        "weight": 0.1,
+        "score": 75.0,
+        "tone": "push"
+      }
+    ],
+    "annotation": "媒体与市场共同强化'粘性通胀'叙事，自我实现风险升温。"
+  }
+]

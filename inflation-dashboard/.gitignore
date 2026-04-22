@@ -1,0 +1,13 @@
+node_modules
+.next
+.turbo
+out
+dist
+.vercel
+.DS_Store
+*.log
+.env*
+!.env.example
+# data/pipeline/ IS committed — it's the static payload Vercel serves.
+# GitHub Actions refreshes it daily and pushes; Vercel auto-redeploys.
+tsconfig.tsbuildinfo

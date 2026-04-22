@@ -1,0 +1,475 @@
+{
+  "as_of": "2026-04-21",
+  "current_regime": "sticky_inflation",
+  "scenarios": [
+    {
+      "key": "reflation_surge",
+      "is_current": false,
+      "probability": 0.15,
+      "label": "再加速",
+      "emoji": "🔴",
+      "description": "驱动 + 预期同步上行，通胀风险阶段性支配市场。",
+      "historical_analog": [
+        "1973-1974",
+        "1979-1980",
+        "2021H2"
+      ],
+      "median_duration_months": 8,
+      "exit_paths": [
+        {
+          "path": "需求破坏（衰退）",
+          "weight": 0.45
+        },
+        {
+          "path": "紧缩过度",
+          "weight": 0.35
+        },
+        {
+          "path": "供给恢复",
+          "weight": 0.2
+        }
+      ],
+      "performance": [
+        {
+          "asset": "gold",
+          "return_range": [
+            12,
+            25
+          ],
+          "direction": "BULLISH"
+        },
+        {
+          "asset": "usd",
+          "return_range": [
+            2,
+            8
+          ],
+          "direction": "NEU_BULL"
+        },
+        {
+          "asset": "ust",
+          "return_range": [
+            -12,
+            -4
+          ],
+          "direction": "BEARISH"
+        },
+        {
+          "asset": "spx",
+          "return_range": [
+            -12,
+            -2
+          ],
+          "direction": "BEARISH"
+        }
+      ],
+      "weights": [
+        {
+          "asset": "gold",
+          "current": 0.2,
+          "neutral": 0.1,
+          "delta_pp": 10,
+          "note": "首选抗通胀"
+        },
+        {
+          "asset": "usd",
+          "current": 0.2,
+          "neutral": 0.15,
+          "delta_pp": 5,
+          "note": "短端T-Bill"
+        },
+        {
+          "asset": "ust",
+          "current": 0.1,
+          "neutral": 0.25,
+          "delta_pp": -15,
+          "note": "只保留短端"
+        },
+        {
+          "asset": "spx",
+          "current": 0.3,
+          "neutral": 0.45,
+          "delta_pp": -15,
+          "note": "能源/物资/金融"
+        }
+      ],
+      "key_risks": "若 FOMC 快速 50bps 加息 → 黄金回撤，但中期仍有支撑。"
+    },
+    {
+      "key": "sticky_inflation",
+      "is_current": true,
+      "probability": 0.55,
+      "label": "粘性通胀",
+      "emoji": "🟠",
+      "description": "核心服务 + 房租粘性，头条通胀波动但核心顽固。",
+      "historical_analog": [
+        "1967-1968",
+        "2006-2007",
+        "2022H2-2023H1"
+      ],
+      "median_duration_months": 9,
+      "exit_paths": [
+        {
+          "path": "需求缓慢破坏",
+          "weight": 0.6
+        },
+        {
+          "path": "供给恢复",
+          "weight": 0.25
+        },
+        {
+          "path": "结构性调整",
+          "weight": 0.15
+        }
+      ],
+      "performance": [
+        {
+          "asset": "gold",
+          "return_range": [
+            8,
+            15
+          ],
+          "direction": "BULLISH"
+        },
+        {
+          "asset": "usd",
+          "return_range": [
+            -3,
+            3
+          ],
+          "direction": "NEUTRAL"
+        },
+        {
+          "asset": "ust",
+          "return_range": [
+            -4,
+            2
+          ],
+          "direction": "BEARISH"
+        },
+        {
+          "asset": "spx",
+          "return_range": [
+            -2,
+            6
+          ],
+          "direction": "NEU_BEAR"
+        }
+      ],
+      "weights": [
+        {
+          "asset": "gold",
+          "current": 0.15,
+          "neutral": 0.1,
+          "delta_pp": 5,
+          "note": "中配，抗实际利率"
+        },
+        {
+          "asset": "usd",
+          "current": 0.15,
+          "neutral": 0.15,
+          "delta_pp": 0,
+          "note": "短端锚定"
+        },
+        {
+          "asset": "ust",
+          "current": 0.2,
+          "neutral": 0.25,
+          "delta_pp": -5,
+          "note": "偏短端"
+        },
+        {
+          "asset": "spx",
+          "current": 0.4,
+          "neutral": 0.45,
+          "delta_pp": -5,
+          "note": "高分红低估值"
+        }
+      ],
+      "key_risks": "FOMC 意外鹰派 → 短期黄金回撤，美元冲高。"
+    },
+    {
+      "key": "goldilocks",
+      "is_current": false,
+      "probability": 0.25,
+      "label": "温和通胀",
+      "emoji": "🟡",
+      "description": "接近 2% 目标走廊，政策可耐心等待。",
+      "historical_analog": [
+        "2015-2019",
+        "1995-1999"
+      ],
+      "median_duration_months": 18,
+      "exit_paths": [
+        {
+          "path": "维持稳定",
+          "weight": 0.5
+        },
+        {
+          "path": "温和加速",
+          "weight": 0.3
+        },
+        {
+          "path": "放缓回落",
+          "weight": 0.2
+        }
+      ],
+      "performance": [
+        {
+          "asset": "gold",
+          "return_range": [
+            -2,
+            8
+          ],
+          "direction": "NEUTRAL"
+        },
+        {
+          "asset": "usd",
+          "return_range": [
+            -3,
+            3
+          ],
+          "direction": "NEUTRAL"
+        },
+        {
+          "asset": "ust",
+          "return_range": [
+            2,
+            8
+          ],
+          "direction": "NEU_BULL"
+        },
+        {
+          "asset": "spx",
+          "return_range": [
+            8,
+            20
+          ],
+          "direction": "BULLISH"
+        }
+      ],
+      "weights": [
+        {
+          "asset": "gold",
+          "current": 0.1,
+          "neutral": 0.1,
+          "delta_pp": 0,
+          "note": "维持"
+        },
+        {
+          "asset": "usd",
+          "current": 0.1,
+          "neutral": 0.15,
+          "delta_pp": -5,
+          "note": "低配"
+        },
+        {
+          "asset": "ust",
+          "current": 0.25,
+          "neutral": 0.25,
+          "delta_pp": 0,
+          "note": "维持久期"
+        },
+        {
+          "asset": "spx",
+          "current": 0.55,
+          "neutral": 0.45,
+          "delta_pp": 10,
+          "note": "超配，偏成长"
+        }
+      ],
+      "key_risks": "美联储过早宽松 → 重新滑入再加速。"
+    },
+    {
+      "key": "disinflation",
+      "is_current": false,
+      "probability": 0.05,
+      "label": "通胀回落",
+      "emoji": "🟢",
+      "description": "同比和环比同步放缓，降息预期定价增强。",
+      "historical_analog": [
+        "1984-1986",
+        "2011-2013"
+      ],
+      "median_duration_months": 12,
+      "exit_paths": [
+        {
+          "path": "回到 goldilocks",
+          "weight": 0.55
+        },
+        {
+          "path": "滑入通缩",
+          "weight": 0.15
+        },
+        {
+          "path": "再通胀",
+          "weight": 0.3
+        }
+      ],
+      "performance": [
+        {
+          "asset": "gold",
+          "return_range": [
+            5,
+            15
+          ],
+          "direction": "BULLISH"
+        },
+        {
+          "asset": "usd",
+          "return_range": [
+            -8,
+            -2
+          ],
+          "direction": "BEARISH"
+        },
+        {
+          "asset": "ust",
+          "return_range": [
+            6,
+            12
+          ],
+          "direction": "BULLISH"
+        },
+        {
+          "asset": "spx",
+          "return_range": [
+            10,
+            20
+          ],
+          "direction": "BULLISH"
+        }
+      ],
+      "weights": [
+        {
+          "asset": "gold",
+          "current": 0.12,
+          "neutral": 0.1,
+          "delta_pp": 2,
+          "note": "受益降息"
+        },
+        {
+          "asset": "usd",
+          "current": 0.08,
+          "neutral": 0.15,
+          "delta_pp": -7,
+          "note": "低配"
+        },
+        {
+          "asset": "ust",
+          "current": 0.35,
+          "neutral": 0.25,
+          "delta_pp": 10,
+          "note": "拉长久期"
+        },
+        {
+          "asset": "spx",
+          "current": 0.45,
+          "neutral": 0.45,
+          "delta_pp": 0,
+          "note": "成长回归"
+        }
+      ],
+      "key_risks": "财政脉冲重启 → 通胀 V 型反弹。"
+    },
+    {
+      "key": "deflation_risk",
+      "is_current": false,
+      "probability": 0.0,
+      "label": "通缩风险",
+      "emoji": "🔵",
+      "description": "价格负增长 + 预期崩塌，需要大幅宽松。",
+      "historical_analog": [
+        "2008-2009",
+        "2020 Q2"
+      ],
+      "median_duration_months": 6,
+      "exit_paths": [
+        {
+          "path": "央行大规模刺激",
+          "weight": 0.7
+        },
+        {
+          "path": "财政救援",
+          "weight": 0.25
+        },
+        {
+          "path": "结构性萧条",
+          "weight": 0.05
+        }
+      ],
+      "performance": [
+        {
+          "asset": "gold",
+          "return_range": [
+            -5,
+            20
+          ],
+          "direction": "NEU_BULL"
+        },
+        {
+          "asset": "usd",
+          "return_range": [
+            -10,
+            -2
+          ],
+          "direction": "BEARISH"
+        },
+        {
+          "asset": "ust",
+          "return_range": [
+            10,
+            25
+          ],
+          "direction": "BULLISH"
+        },
+        {
+          "asset": "spx",
+          "return_range": [
+            -25,
+            -5
+          ],
+          "direction": "BEARISH"
+        }
+      ],
+      "weights": [
+        {
+          "asset": "gold",
+          "current": 0.15,
+          "neutral": 0.1,
+          "delta_pp": 5,
+          "note": "避险 + 降息"
+        },
+        {
+          "asset": "usd",
+          "current": 0.05,
+          "neutral": 0.15,
+          "delta_pp": -10,
+          "note": "反向操作"
+        },
+        {
+          "asset": "ust",
+          "current": 0.5,
+          "neutral": 0.25,
+          "delta_pp": 25,
+          "note": "重仓长端"
+        },
+        {
+          "asset": "spx",
+          "current": 0.3,
+          "neutral": 0.45,
+          "delta_pp": -15,
+          "note": "防御板块"
+        }
+      ],
+      "key_risks": "恶性通缩预期自我实现 → 资产价格螺旋。"
+    }
+  ],
+  "transition_next_month": {
+    "reflation_surge": 0.15,
+    "sticky_inflation": 0.55,
+    "goldilocks": 0.25,
+    "disinflation": 0.05,
+    "deflation_risk": 0.0
+  }
+}

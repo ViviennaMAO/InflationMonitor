@@ -1,0 +1,14 @@
+{
+  "as_of": "2026-04-21",
+  "pi": 57.2,
+  "regime": "sticky_inflation",
+  "components": {
+    "P": 53.0,
+    "E": 49.3,
+    "D": 54.2,
+    "F": 64.6,
+    "N": 67.8
+  },
+  "delta_1d": 0.0,
+  "delta_7d": 0.0
+}

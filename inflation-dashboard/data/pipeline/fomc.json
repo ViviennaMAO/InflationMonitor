@@ -1,0 +1,127 @@
+{
+  "current_rate": 4.375,
+  "next_meeting": "2026-05-07",
+  "dot_plot_median": 4.125,
+  "assessment": "Powell 最新发言继续强调 \"stay restrictive for longer\"。委员分化：Waller / Logan 偏鹰，Goolsbee / Daly 偏鸽。点阵图隐含 2026 降息 2 次，市场定价 2.1 次基本一致。近期 Jackson Hole 讲话预计不会松口。",
+  "hawkdove_trend": [
+    {
+      "date": "2026-02-10",
+      "score": 1,
+      "ma5": 0.2
+    },
+    {
+      "date": "2026-02-17",
+      "score": 0,
+      "ma5": 0.2
+    },
+    {
+      "date": "2026-02-24",
+      "score": 1,
+      "ma5": 0.4
+    },
+    {
+      "date": "2026-03-03",
+      "score": 2,
+      "ma5": 0.8
+    },
+    {
+      "date": "2026-03-10",
+      "score": 1,
+      "ma5": 1.0
+    },
+    {
+      "date": "2026-03-17",
+      "score": 0,
+      "ma5": 0.8
+    },
+    {
+      "date": "2026-03-24",
+      "score": 1,
+      "ma5": 1.0
+    },
+    {
+      "date": "2026-03-31",
+      "score": 1,
+      "ma5": 1.0
+    },
+    {
+      "date": "2026-04-07",
+      "score": 0,
+      "ma5": 0.6
+    },
+    {
+      "date": "2026-04-14",
+      "score": 1,
+      "ma5": 0.6
+    },
+    {
+      "date": "2026-04-21",
+      "score": 1,
+      "ma5": 0.8
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-04-18",
+      "type": "speech",
+      "speaker": "Powell",
+      "title": "在 NABE 年会主旨演讲",
+      "summary": "重申通胀回到 2% 之前不急于降息，关注服务通胀和工资增长的持续性。",
+      "hawkdove": 1,
+      "has_vote": true,
+      "key_quotes": [
+        "\"We can afford to be patient\"",
+        "\"Services inflation remains sticky\""
+      ]
+    },
+    {
+      "date": "2026-04-14",
+      "type": "speech",
+      "speaker": "Waller",
+      "title": "AEI 智库圆桌发言",
+      "summary": "若未来两次 CPI 都出现上行意外，不排除进一步加息 25bps 的可能。",
+      "hawkdove": 2,
+      "has_vote": true,
+      "key_quotes": [
+        "\"Another hike is not off the table\""
+      ]
+    },
+    {
+      "date": "2026-04-09",
+      "type": "minutes",
+      "title": "3 月 FOMC 会议纪要",
+      "summary": "与会成员普遍认为降息时点推迟，部分委员担心'最后一英里'通胀回落更慢。",
+      "hawkdove": 1,
+      "has_vote": false
+    },
+    {
+      "date": "2026-04-07",
+      "type": "speech",
+      "speaker": "Goolsbee",
+      "title": "芝加哥经济俱乐部",
+      "summary": "认为住房通胀将在下半年明显回落，对 2 次降息路径仍有信心。",
+      "hawkdove": -1,
+      "has_vote": false
+    },
+    {
+      "date": "2026-03-19",
+      "type": "meeting",
+      "title": "3 月 FOMC 议息决议",
+      "summary": "维持 4.25-4.50%。点阵图中位数 4.125%，隐含年内 2 次降息。SEP 上调 Core PCE 预测 0.2pp。",
+      "hawkdove": 1,
+      "has_vote": true,
+      "key_quotes": [
+        "\"Inflation has made progress but remains elevated\""
+      ]
+    },
+    {
+      "date": "2026-03-10",
+      "type": "speech",
+      "speaker": "Daly",
+      "title": "Stanford 发言",
+      "summary": "劳动力市场降温迹象明显，为 Q3 开始降息创造条件。",
+      "hawkdove": -1,
+      "has_vote": true
+    }
+  ]
+}

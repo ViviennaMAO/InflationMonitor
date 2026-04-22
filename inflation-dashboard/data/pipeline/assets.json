@@ -1,0 +1,111 @@
+{
+  "as_of": "2026-04-21",
+  "pi_score": 57.2,
+  "regime": "sticky_inflation",
+  "assets": [
+    {
+      "key": "gold",
+      "name_zh": "黄金",
+      "ticker": "XAU",
+      "emoji": "🟡",
+      "direction": "BULLISH",
+      "confidence": 73,
+      "headline": "粘性通胀 + 实际利率见顶，做多黄金优先级最高",
+      "sensitivity": 0.51,
+      "rationale_chain": "服务粘性↑ → 实际利率→ 黄金↑",
+      "historical_analog": {
+        "period": "1970s",
+        "similarity": 0.62
+      },
+      "risk": "若 FOMC 超鹰 → 短期回撤",
+      "suggested_weight": {
+        "current": 0.15,
+        "neutral": 0.1,
+        "delta_pp": 5
+      },
+      "beta": {
+        "cpi": 0.55,
+        "bei": 0.55,
+        "fomc_hawk": -0.35
+      }
+    },
+    {
+      "key": "usd",
+      "name_zh": "美元",
+      "ticker": "DXY",
+      "emoji": "💵",
+      "direction": "NEUTRAL",
+      "confidence": 50,
+      "headline": "紧缩预期支撑 vs 滞胀担忧拖累，方向胶着",
+      "sensitivity": 0.26,
+      "rationale_chain": "FOMC 鹰→ 利差扩 → 美元+ | 滞胀→ 美元-",
+      "historical_analog": {
+        "period": "1970s",
+        "similarity": 0.62
+      },
+      "risk": "若外部风险事件 → 避险飞涨",
+      "suggested_weight": {
+        "current": 0.15,
+        "neutral": 0.15,
+        "delta_pp": 0
+      },
+      "beta": {
+        "cpi": 0.15,
+        "bei": -0.2,
+        "fomc_hawk": 0.6
+      }
+    },
+    {
+      "key": "ust",
+      "name_zh": "美债 10Y",
+      "ticker": "UST",
+      "emoji": "📉",
+      "direction": "BEARISH",
+      "confidence": 71,
+      "headline": "实际利率高位 + 供给压力，长端价格承压",
+      "sensitivity": 0.61,
+      "rationale_chain": "CPI 粘性→ 实际利率 → UST 价格↓",
+      "historical_analog": {
+        "period": "1970s",
+        "similarity": 0.62
+      },
+      "risk": "避险事件 → 短期反弹",
+      "suggested_weight": {
+        "current": 0.2,
+        "neutral": 0.25,
+        "delta_pp": -5
+      },
+      "beta": {
+        "cpi": -0.65,
+        "bei": -0.5,
+        "fomc_hawk": -0.7
+      }
+    },
+    {
+      "key": "spx",
+      "name_zh": "美股 S&P",
+      "ticker": "SPX",
+      "emoji": "📈",
+      "direction": "NEU_BEAR",
+      "confidence": 60,
+      "headline": "盈利受益部分抵消估值压力，警惕利率敏感板块",
+      "sensitivity": 0.3,
+      "rationale_chain": "通胀粘性→ 估值多头 + 盈利↑（能源/金融）",
+      "historical_analog": {
+        "period": "1970s",
+        "similarity": 0.62
+      },
+      "risk": "Breadth 恶化 + 高估值科技股回撤",
+      "suggested_weight": {
+        "current": 0.4,
+        "neutral": 0.45,
+        "delta_pp": -5
+      },
+      "beta": {
+        "cpi": -0.3,
+        "bei": -0.25,
+        "fomc_hawk": -0.4
+      }
+    }
+  ]
+}
