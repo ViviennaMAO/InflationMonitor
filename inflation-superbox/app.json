@@ -1,0 +1,29 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/factors/factors",
+    "pages/scenarios/scenarios",
+    "pages/fomc/fomc"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#0A0E1A",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "Inflation Monitor",
+    "backgroundColor": "#050810",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#6B7280",
+    "selectedColor": "#FBBF24",
+    "backgroundColor": "#0A0E1A",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [
+      { "pagePath": "pages/index/index",     "text": "看板" },
+      { "pagePath": "pages/factors/factors", "text": "因子" },
+      { "pagePath": "pages/scenarios/scenarios", "text": "情景" },
+      { "pagePath": "pages/fomc/fomc",       "text": "FOMC" }
+    ]
+  }
+}

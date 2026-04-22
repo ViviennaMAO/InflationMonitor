@@ -1,0 +1,23 @@
+{
+	"description": "Inflation Monitor - Luffa SuperBox Miniprogram",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"uploadWithSourceMap": true,
+		"uglifyFileName": true,
+		"remoteDebugLogEnable": true,
+		"prefetch": false
+	},
+	"compileType": "miniprogram",
+	"appid": "",
+	"projectname": "Inflation%20Monitor",
+	"LuffaToolsappid": "",
+	"scripts": {},
+	"condition": {}
+}

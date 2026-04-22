@@ -1,0 +1,76 @@
+<view class="container">
+
+  <view wx:if="{{loading}}" class="text-center text-muted" style="padding:100rpx 0;">Loading...</view>
+  <view wx:elif="{{error}}" class="text-center text-red" style="padding:100rpx 0;">{{error}}</view>
+
+  <block wx:else>
+
+    <!-- KPI grid -->
+    <view class="card">
+      <view style="display:grid; grid-template-columns:1fr 1fr; gap:14rpx;">
+        <view style="background:rgba(255,255,255,0.03); border-radius:10rpx; padding:14rpx;">
+          <text class="text-xs text-dim">当前利率</text>
+          <text class="text-lg text-blue font-mono font-bold" style="display:block; margin-top:4rpx;">{{currentRate}}</text>
+        </view>
+        <view style="background:rgba(255,255,255,0.03); border-radius:10rpx; padding:14rpx;">
+          <text class="text-xs text-dim">点阵图中位数</text>
+          <text class="text-lg text-amber font-mono font-bold" style="display:block; margin-top:4rpx;">{{dotPlotMedian}}</text>
+        </view>
+        <view style="background:rgba(255,255,255,0.03); border-radius:10rpx; padding:14rpx;">
+          <text class="text-xs text-dim">下次会议</text>
+          <text class="text-lg text-green font-mono font-bold" style="display:block; margin-top:4rpx;">{{nextMeeting}}</text>
+        </view>
+        <view style="background:rgba(255,255,255,0.03); border-radius:10rpx; padding:14rpx;">
+          <text class="text-xs text-dim">鹰鸽 MA5</text>
+          <text class="text-lg font-mono font-bold {{ma5Class}}" style="display:block; margin-top:4rpx;">{{ma5}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- Assessment -->
+    <view class="card">
+      <text class="card-title mb-sm">联储立场综合评估</text>
+      <text class="text-sm text-muted" style="line-height:1.6; display:block;">{{assessment}}</text>
+    </view>
+
+    <!-- Timeline -->
+    <view class="section-divider">
+      <view class="line"></view>
+      <text class="label">声明 · 纪要 · 发言</text>
+      <view class="line"></view>
+    </view>
+
+    <view wx:for="{{timeline}}" wx:key="date" class="card">
+      <view class="flex items-center gap-sm mb-sm" style="flex-wrap:wrap;">
+        <text class="text-xs text-dim font-mono">{{item.date}}</text>
+        <view class="badge" style="font-size:18rpx; padding:4rpx 10rpx; background:rgba(100,116,139,0.15); color:#CBD5E1;">{{item.typeLabel}}</view>
+        <view class="badge {{item.hawkBadgeClass}}" style="font-size:18rpx; padding:4rpx 10rpx;">{{item.hawkLabel}}</view>
+        <text wx:if="{{item.hasVote}}" class="text-xs text-green">有投票权</text>
+      </view>
+
+      <view wx:if="{{item.speaker}}" style="margin-bottom:4rpx;">
+        <text class="text-sm text-blue font-semibold">{{item.speaker}}: </text>
+        <text class="text-sm text-white">{{item.title}}</text>
+      </view>
+      <view wx:else style="margin-bottom:4rpx;">
+        <text class="text-sm text-white font-semibold">{{item.title}}</text>
+      </view>
+
+      <text class="text-xs text-muted" style="line-height:1.6; display:block; margin-top:8rpx;">{{item.summary}}</text>
+
+      <view wx:if="{{item.keyQuotes.length}}" style="margin-top:12rpx;">
+        <view wx:for="{{item.keyQuotes}}" wx:for-item="q" wx:key="*this"
+              style="border-left:2rpx solid rgba(255,255,255,0.15); padding:4rpx 12rpx; margin-bottom:6rpx;">
+          <text class="text-xs text-dim" style="font-style:italic;">{{q}}</text>
+        </view>
+      </view>
+
+      <view wx:if="{{item.rationale}}" style="margin-top:12rpx; padding:10rpx 12rpx; background:rgba(251,191,36,0.06); border-radius:8rpx;">
+        <text class="text-xs text-amber" style="line-height:1.5;">🔍 {{item.rationale}}</text>
+        <text wx:if="{{item.confidence}}" class="text-xs text-dim font-mono" style="margin-left:8rpx;">置信 {{item.confidence}}%</text>
+      </view>
+    </view>
+
+  </block>
+
+</view>

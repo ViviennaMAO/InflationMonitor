@@ -1,0 +1,7 @@
+{
+  "desc": "Inflation Monitor SuperBox — indexing config.",
+  "rules": [{
+    "action": "allow",
+    "page": "*"
+  }]
+}

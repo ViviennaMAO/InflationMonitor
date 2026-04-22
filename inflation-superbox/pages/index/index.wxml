@@ -1,0 +1,132 @@
+<view class="container">
+
+  <view wx:if="{{loading}}" class="text-center text-muted" style="padding:100rpx 0;">Loading...</view>
+  <view wx:elif="{{error}}" class="text-center text-red" style="padding:100rpx 0;">{{error}}</view>
+
+  <block wx:else>
+
+    <!-- Header card -->
+    <view class="card" style="padding:20rpx 24rpx;">
+      <view class="flex justify-between items-center">
+        <view class="flex-col">
+          <text class="formula-strip text-sm">Π = P + E + D + F + N</text>
+          <text class="text-dim text-xs" style="margin-top:4rpx;">Inflation Monitor · v1.0</text>
+        </view>
+        <text class="text-dim text-xs">{{asOf}}</text>
+      </view>
+      <view class="flex items-center" style="margin-top:16rpx; gap:16rpx;">
+        <text class="text-dim text-xs">Π</text>
+        <text class="text-gold font-bold text-xl font-mono">{{pi}}</text>
+        <text class="text-dim text-xs">/100</text>
+        <text class="{{delta1dClass}} text-xs font-mono">{{delta1d}}</text>
+        <view class="badge {{regimeBadgeClass}}" style="margin-left:auto;">{{regimeEmoji}} {{regimeLabel}}</view>
+      </view>
+    </view>
+
+    <!-- Four-asset signal tower -->
+    <view class="section-divider">
+      <view class="line"></view>
+      <text class="label">Π → 四资产信号塔</text>
+      <view class="line"></view>
+    </view>
+
+    <view wx:for="{{assets}}" wx:key="key" class="card" style="padding:20rpx;">
+      <view class="flex justify-between items-center mb-sm">
+        <view class="flex items-center gap-sm">
+          <text class="text-lg">{{item.emoji}}</text>
+          <text class="text-white font-semibold">{{item.name}}</text>
+          <text class="text-dim text-xs font-mono">{{item.ticker}}</text>
+        </view>
+        <view class="badge {{item.directionBadgeClass}}">{{item.directionLabel}}</view>
+      </view>
+
+      <text class="text-sm text-white" style="line-height:1.5; display:block;">{{item.headline}}</text>
+
+      <!-- Confidence + sensitivity bars -->
+      <view style="margin-top:16rpx;">
+        <view class="flex items-center gap-sm" style="margin-bottom:8rpx;">
+          <text class="text-xs text-dim" style="width:110rpx;">置信度</text>
+          <view class="progress-bar" style="flex:1;">
+            <view class="progress-fill" style="width:{{item.confidence}}%; background:#F59E0B;"></view>
+          </view>
+          <text class="text-xs text-white font-mono" style="width:50rpx; text-align:right;">{{item.confidence}}</text>
+        </view>
+        <view class="flex items-center gap-sm">
+          <text class="text-xs text-dim" style="width:110rpx;">通胀敏感</text>
+          <view class="progress-bar" style="flex:1;">
+            <view class="progress-fill" style="width:{{item.sensitivity}}%; background:#F97316;"></view>
+          </view>
+          <text class="text-xs text-white font-mono" style="width:50rpx; text-align:right;">{{item.sensitivity}}</text>
+        </view>
+      </view>
+
+      <!-- Chain -->
+      <view style="margin-top:14rpx; padding:10rpx 14rpx; background:rgba(255,255,255,0.04); border-radius:10rpx;">
+        <text class="text-xs text-muted font-mono">链: {{item.chain}}</text>
+      </view>
+
+      <!-- Historical + risk -->
+      <view class="flex justify-between" style="margin-top:14rpx; gap:20rpx;">
+        <view class="flex-col" style="flex:1;">
+          <text class="text-xs text-dim">历史对照</text>
+          <text class="text-xs text-white" style="margin-top:2rpx;">{{item.analog}} <text class="text-dim font-mono">ρ={{item.similarity}}</text></text>
+        </view>
+        <view class="flex-col" style="flex:1;">
+          <text class="text-xs text-dim">主要风险</text>
+          <text class="text-xs text-white" style="margin-top:2rpx;">{{item.risk}}</text>
+        </view>
+      </view>
+
+      <!-- Suggested weight -->
+      <view class="flex justify-between items-center" style="margin-top:14rpx; padding-top:14rpx; border-top:1rpx solid rgba(255,255,255,0.06);">
+        <text class="text-xs text-dim">建议仓位</text>
+        <view class="flex items-center gap-sm">
+          <text class="text-sm text-white font-mono">{{item.currentPct}}%</text>
+          <text class="text-xs text-dim">基准 {{item.neutralPct}}%</text>
+          <text class="text-sm {{item.deltaClass}} font-mono font-bold">{{item.deltaText}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- Π components breakdown -->
+    <view class="card">
+      <view class="flex justify-between items-center mb-md">
+        <text class="card-title">Π 五分项</text>
+        <text class="text-gold text-xs formula-strip">P·E·D·F·N</text>
+      </view>
+      <view wx:for="{{components}}" wx:key="key" class="flex items-center gap-sm" style="margin-bottom:12rpx;">
+        <text class="text-xs text-dim" style="width:140rpx;">{{item.label}} ({{item.weight}}%)</text>
+        <view class="progress-bar" style="flex:1;">
+          <view class="progress-fill" style="width:{{item.score}}%; background:{{item.color}}; opacity:0.75;"></view>
+        </view>
+        <text class="text-xs text-white font-mono" style="width:56rpx; text-align:right;">{{item.score}}</text>
+      </view>
+    </view>
+
+    <!-- Inflation type diagnosis -->
+    <view class="card">
+      <view class="flex justify-between items-center mb-md">
+        <text class="card-title">通胀体制诊断</text>
+        <text class="text-dim text-xs">Inflation Type</text>
+      </view>
+      <view class="flex justify-between items-center">
+        <view class="flex-col">
+          <text class="text-dim text-xs">主导类型</text>
+          <text class="text-lg font-semibold text-yellow" style="margin-top:4rpx;">{{typeLabel}}</text>
+          <text class="text-dim text-xs" style="margin-top:4rpx;">贡献度 <text class="text-white font-mono">{{typeWeight}}</text></text>
+        </view>
+        <view class="flex-col text-right">
+          <text class="text-dim text-xs">持久性</text>
+          <text class="text-white text-md" style="margin-top:4rpx;">{{persistence}}</text>
+          <text class="text-dim text-xs" style="margin-top:8rpx;">政策响应</text>
+          <text class="text-white text-md" style="margin-top:4rpx;">{{policyResponse}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view style="padding:20rpx 0; text-align:center;">
+      <text class="text-dim text-xs">下拉刷新 · 看板 / 因子 / 情景 / FOMC</text>
+    </view>
+  </block>
+
+</view>
