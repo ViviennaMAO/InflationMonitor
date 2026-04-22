@@ -133,17 +133,17 @@
     "key": "D",
     "label": "Drivers",
     "label_zh": "驱动因子",
-    "score": 54.2,
+    "score": 56.6,
     "weight": 0.2,
     "headline": "油价 + 工资双推升，住房粘性延后回落",
     "sub_factors": [
       {
         "key": "wti",
         "label": "WTI YoY",
-        "value": 43.88,
+        "value": 56.1,
         "unit": "%",
         "weight": 0.2,
-        "score": 82.1,
+        "score": 95.7,
         "tone": "push"
       },
       {
@@ -176,10 +176,10 @@
       {
         "key": "dxy",
         "label": "DXY YoY",
-        "value": -0.56,
+        "value": 0.25,
         "unit": "%",
         "weight": 0.1,
-        "score": 62.2,
+        "score": 59.0,
         "tone": "neutral"
       },
       {
