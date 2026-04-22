@@ -44,10 +44,10 @@ def main() -> None:
     sources = data.get("sources", [])
     print(f"      resolved {len(sources)} live sources" + (f" (falling back to priors)" if not sources else ""))
 
-    # 2. Score Π
-    print("[2/5] Scoring Π...")
+    # 2. Score IPS
+    print("[2/5] Scoring IPS...")
     pi = score_pi(data)
-    print(f"      Π = {pi['pi']:.1f} · regime = {pi['regime']}")
+    print(f"      IPS = {pi['pi']:.1f} · regime = {pi['regime']}")
     print(f"      components: {pi['components']}")
 
     # 3. Map assets

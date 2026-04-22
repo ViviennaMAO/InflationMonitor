@@ -6,7 +6,7 @@ export function InflationHistory({ data }: { data: InflationHistoryEntry[] }) {
   return (
     <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-4 h-full">
       <div className="flex items-center justify-between mb-2">
-        <h3 className="text-xs font-semibold text-slate-200">Π 评分 vs CPI 同比</h3>
+        <h3 className="text-xs font-semibold text-slate-200">IPS 评分 vs CPI 同比</h3>
         <span className="text-[10px] text-slate-500">近 90 日</span>
       </div>
       <ResponsiveContainer width="100%" height={240}>
@@ -44,7 +44,7 @@ export function InflationHistory({ data }: { data: InflationHistoryEntry[] }) {
           <Tooltip
             contentStyle={{ background: '#0f172a', border: '1px solid #1e293b', borderRadius: 8, fontSize: 11 }}
             formatter={(val, name) => {
-              if (name === 'pi') return [Number(val).toFixed(0), 'Π 评分'];
+              if (name === 'pi') return [Number(val).toFixed(0), 'IPS 评分'];
               if (name === 'cpi_yoy') return [`${Number(val).toFixed(2)}%`, 'CPI YoY'];
               return [val, name];
             }}
@@ -71,7 +71,7 @@ export function InflationHistory({ data }: { data: InflationHistoryEntry[] }) {
         </ComposedChart>
       </ResponsiveContainer>
       <div className="flex items-center gap-3 mt-1 text-[10px] text-slate-500">
-        <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-[#fbbf24]" />Π 评分</span>
+        <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-[#fbbf24]" />IPS 评分</span>
         <span className="flex items-center gap-1"><span className="w-3 h-0.5 bg-slate-400 border-dashed" />CPI YoY</span>
         <span className="ml-auto">阈值: <span className="text-orange-400">55</span> · <span className="text-red-400">70</span></span>
       </div>

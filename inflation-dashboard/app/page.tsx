@@ -54,7 +54,8 @@ export default function Dashboard() {
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-4">
           {/* Gauge */}
           <div className="lg:col-span-3 bg-slate-900/60 border border-slate-800 rounded-xl p-5 flex flex-col items-center justify-center">
-            <div className="text-xs text-slate-500 font-mono mb-2">Π (Inflation Score) — 综合评分</div>
+            <div className="text-xs text-slate-500 font-mono mb-1">IPS — 综合评分</div>
+            <div className="text-[10px] text-slate-600 mb-2">Inflation Pressure Score · 通胀压力评分</div>
             <InflationGauge score={score.pi} regime={score.regime} />
             <div className="mt-4 w-full space-y-1.5">
               {[
@@ -91,7 +92,7 @@ export default function Dashboard() {
           <div className="flex items-center gap-3 mb-3">
             <div className="h-px flex-1 bg-slate-800" />
             <span className="text-xs text-slate-500 tracking-widest uppercase">
-              Π 五分项 · Price / Expectations / Drivers / Fiscal / Narrative
+              IPS 五分项 · Price / Expectations / Drivers / Fiscal / Narrative
             </span>
             <div className="h-px flex-1 bg-slate-800" />
           </div>

@@ -36,7 +36,7 @@ DASHBOARD_DATA_DIR.mkdir(parents=True, exist_ok=True)
 FRED_API_KEY = os.getenv("FRED_API_KEY", "")  # https://fred.stlouisfed.org/docs/api/api_key.html
 
 # ──────────────────────────────────────────────────────────
-#  Π 公式权重 (对齐 PRD v1.0)
+#  IPS 公式权重 (对齐 PRD v1.0)
 # ──────────────────────────────────────────────────────────
 WEIGHTS = {"P": 0.25, "E": 0.20, "D": 0.20, "F": 0.15, "N": 0.20}
 

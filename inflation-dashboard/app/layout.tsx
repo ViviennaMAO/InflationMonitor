@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "InflationMonitor — 通胀因子看板",
-  description: "通胀因子全景看板 · Π = P + E + D + F + N · 落地黄金/美元/美债/美股",
+  description: "通胀因子全景看板 · IPS (Inflation Pressure Score) = P + E + D + F + N · 落地黄金/美元/美债/美股",
 };
 
 export default function RootLayout({

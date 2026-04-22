@@ -5,7 +5,7 @@ import type {
   SignalTimelineEntry, EventWindow,
 } from '@/types';
 
-// ───────── Π 综合评分 ─────────
+// ───────── IPS 综合评分 ─────────
 export const mockScore: InflationScore = {
   as_of: '2026-04-21',
   pi: 62,
@@ -468,7 +468,7 @@ export const mockExpectations: ExpectationsBundle = {
   anchored: true,
 };
 
-// ───────── Π 历史 ─────────
+// ───────── IPS 历史 ─────────
 export const mockHistory: InflationHistoryEntry[] = Array.from({ length: 90 }, (_, i) => {
   const d = new Date('2026-01-22');
   d.setDate(d.getDate() + i);

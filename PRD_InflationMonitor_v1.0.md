@@ -15,7 +15,7 @@
 **与 USD Monitor 的关系**:
 - USD Monitor 回答 "美元会怎么动"（γ = r_f + π_risk − cy + σ_alert）
 - **Inflation Monitor 回答 "通胀会怎么动，以及四类资产会如何反应"**
-- 两者可以共存、互相引用（InflationMonitor 的 Π 评分可以作为 USD Monitor 的外生输入，反之 USD Monitor 的 FOMC 鹰鸽指数也是本看板 N 分项的关键输入）
+- 两者可以共存、互相引用（InflationMonitor 的 IPS 评分可以作为 USD Monitor 的外生输入，反之 USD Monitor 的 FOMC 鹰鸽指数也是本看板 N 分项的关键输入）
 
 **与 Gold Monitor 的关系**:
 - Gold Monitor 单标的（XAUUSD）深度建模
@@ -24,7 +24,7 @@
 ### 1.2 核心公式
 
 ```
-Π (Inflation Pressure Score) = w_P·P + w_E·E + w_D·D + w_F·F + w_N·N
+IPS (Inflation Pressure Score) = w_P·P + w_E·E + w_D·D + w_F·F + w_N·N
 ```
 
 | 分项 | 名称 | 权重 | 含义 |
@@ -39,7 +39,7 @@
 
 ### 1.3 信号阈值（通胀体制分型）
 
-| Π 区间 | 通胀体制 | 简述 |
+| IPS 区间 | 通胀体制 | 简述 |
 |--------|----------|------|
 | **≥ 70** | 🔴 再加速 (Reflation Surge) | 驱动+预期同步上行，通胀风险阶段性支配 |
 | **55 ~ 70** | 🟠 粘性通胀 (Sticky Inflation) | 核心项目 3m 年化 > 3%，服务与房租顽固 |
@@ -53,7 +53,7 @@
 四类资产（黄金 / 美元 / 美债 / 美股），每个给出 `BULLISH / NEUTRAL / BEARISH` 徽章 + 信心分（0-100）+ 一句话理由。
 
 **第二层 — 场景化剧本 (c)**:
-把当前 Π 读数映射到四种"通胀体制"下四类资产的表现剧本，提供"如果切换到 X 体制 → 资产 Y 会怎样"的预案。
+把当前 IPS 读数映射到四种"通胀体制"下四类资产的表现剧本，提供"如果切换到 X 体制 → 资产 Y 会怎样"的预案。
 
 ### 1.5 非功能诉求
 
@@ -94,7 +94,7 @@ InflationMonitor/
 │   │   ├── narrative/page.tsx          # 叙事 / 媒体情绪子页
 │   │   ├── scenarios/page.tsx          # 四情景剧本子页
 │   │   └── api/
-│   │       ├── score/route.ts          # Π 综合评分
+│   │       ├── score/route.ts          # IPS 综合评分
 │   │       ├── components/route.ts     # P/E/D/F/N 五分项
 │   │       ├── assets/route.ts         # 四资产方向信号
 │   │       ├── scenarios/route.ts      # 四情景剧本数据
@@ -103,10 +103,10 @@ InflationMonitor/
 │   │       ├── narrative/route.ts      # 媒体叙事指数
 │   │       ├── prices/route.ts         # CPI/PCE/PPI 历史
 │   │       ├── expectations/route.ts   # BEI/Michigan/SPF
-│   │       └── history/route.ts        # Π 信号历史
+│   │       └── history/route.ts        # IPS 信号历史
 │   ├── components/
 │   │   ├── layout/{Header,Footer,StatusBar}.tsx
-│   │   ├── gauge/InflationGauge.tsx    # Π 仪表盘 5 色区间
+│   │   ├── gauge/InflationGauge.tsx    # IPS 仪表盘 5 色区间
 │   │   ├── cards/
 │   │   │   ├── ComponentCard.tsx       # P/E/D/F/N 通用卡
 │   │   │   ├── AssetSignalTower.tsx    # 四资产信号塔
@@ -116,7 +116,7 @@ InflationMonitor/
 │   │   │   ├── NarrativeCard.tsx       # 叙事指数
 │   │   │   └── FomcSummaryCard.tsx     # FOMC 摘要（嵌入主页）
 │   │   ├── charts/
-│   │   │   ├── InflationHistory.tsx    # Π 评分 + CPI 双轴
+│   │   │   ├── InflationHistory.tsx    # IPS 评分 + CPI 双轴
 │   │   │   ├── PriceDecomp.tsx         # 核心/非核心/食品/能源堆叠
 │   │   │   ├── ExpectationsChart.tsx   # BEI 曲线 vs 实现通胀
 │   │   │   ├── DriversHeatmap.tsx      # 驱动因子热力图
@@ -136,7 +136,7 @@ InflationMonitor/
 │   ├── nlp_narrative.py                # 新闻/社媒叙事强度
 │   ├── scoring_P.py / scoring_E.py / scoring_D.py
 │   ├── scoring_F.py / scoring_N.py
-│   ├── asset_mapping.py                # Π → 四资产信号
+│   ├── asset_mapping.py                # IPS → 四资产信号
 │   ├── scenarios.py                    # 四情景历史参照构造
 │   ├── run_daily.py
 │   └── output/*.json
@@ -153,7 +153,7 @@ InflationMonitor/
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│  Header: 公式 Π = P+E+D+F+N · 当前体制徽章 · 日期 · 综合评分        │
+│  Header: 公式 IPS = P+E+D+F+N · 当前体制徽章 · 日期 · 综合评分        │
 ├──────────────────────────────────────────────────────────────────┤
 │  Section 1 — EventInterceptor 事件拦截 (CPI/PCE/FOMC T-N 日)      │
 ├──────────────────────────────────────────────────────────────────┤
@@ -162,7 +162,7 @@ InflationMonitor/
 │  Section 3 — 四资产信号塔 (AssetSignalTower) · 主视觉              │
 │     · 黄金 / 美元 / 美债 / 美股 各一张卡 · 方向 + 置信度 + 一句话   │
 ├──────────────────────────────────────────────────────────────────┤
-│  Section 4 — Π 仪表盘 + 五分项进度条 + Π 历史曲线                  │
+│  Section 4 — IPS 仪表盘 + 五分项进度条 + IPS 历史曲线                  │
 ├──────────────────────────────────────────────────────────────────┤
 │  Section 5 — 五分项卡片 P / E / D / F / N (五张平铺)               │
 ├──────────────────────────────────────────────────────────────────┤
@@ -178,10 +178,10 @@ InflationMonitor/
 
 | 元素 | 内容 |
 |------|------|
-| 公式 | `Π = P + E + D + F + N` （金色） |
+| 公式 | `IPS = P + E + D + F + N` （金色） |
 | 副标题 | Inflation Monitor · v1.0 |
 | 日期 | 2026-04-21 · 16:00 ET |
-| 综合评分 | `Π = 62/100` |
+| 综合评分 | `IPS = 62/100` |
 | 体制徽章 | `🟠 粘性通胀` / `🔴 再加速` 等 |
 | 子页导航 | FOMC / 财政 / 叙事 / 情景 |
 
@@ -228,13 +228,13 @@ InflationMonitor/
 
 > 这些 β 来自历史回归 + 人工专家修正，pipeline 每月更新一次。
 
-### 3.5 Section 4 — Π 仪表盘
+### 3.5 Section 4 — IPS 仪表盘
 
 - **270° 环形仪表盘** (Canvas)
 - **五色区间**: 🔵蓝 (0-20) → 🟢绿 (20-35) → 🟡黄 (35-55) → 🟠橙 (55-70) → 🔴红 (70-100)
-- **中心**: `Π = 62` + 当前体制文字
+- **中心**: `IPS = 62` + 当前体制文字
 - **左侧边栏**: P/E/D/F/N 五个水平进度条 + 占比标签
-- **右侧**: `InflationHistory` 折线图，双轴：Π 评分（左）+ CPI 同比（右虚线），时间范围 24 个月
+- **右侧**: `InflationHistory` 折线图，双轴：IPS 评分（左）+ CPI 同比（右虚线），时间范围 24 个月
 
 ### 3.6 Section 5 — 五分项卡片
 
@@ -331,10 +331,10 @@ InflationMonitor/
 
 | Tab | 条件 | 当前概率 |
 |-----|------|---------|
-| 🔴 再加速 | Π ≥ 70，驱动+预期同步上行 | 15% |
-| 🟠 粘性通胀 | 55 ≤ Π < 70，核心服务粘性 | **52%** (当前) |
-| 🟢 回落 | 20 ≤ Π < 55，同环比放缓 | 28% |
-| 🔵 通缩 | Π < 20，负增长 | 5% |
+| 🔴 再加速 | IPS ≥ 70，驱动+预期同步上行 | 15% |
+| 🟠 粘性通胀 | 55 ≤ IPS < 70，核心服务粘性 | **52%** (当前) |
+| 🟢 回落 | 20 ≤ IPS < 55，同环比放缓 | 28% |
+| 🔵 通缩 | IPS < 20，负增长 | 5% |
 
 每个 Tab 内容（以"粘性通胀"为例）：
 
@@ -533,7 +533,7 @@ def score_N(hawkdove_ma5, market_cut_pricing, narrative_index, search_trends, so
           + 0.10*social_score)
 ```
 
-### 5.6 综合 Π
+### 5.6 综合 IPS
 
 ```python
 def pi_score(P, E, D, F, N):
@@ -600,7 +600,7 @@ P_TRANS = [
 
 | 文件 | 内容 | 对应组件 |
 |------|------|---------|
-| `score.json` | Π + 五分项 + regime + 时间戳 | Gauge, Header |
+| `score.json` | IPS + 五分项 + regime + 时间戳 | Gauge, Header |
 | `components.json` | P/E/D/F/N 子因子明细 | ComponentCard × 5 |
 | `assets.json` | 四资产方向信号 | AssetSignalTower |
 | `scenarios.json` | 四情景当前概率 + 剧本文本 + 历史表现 | ScenarioPlaybook |
@@ -610,7 +610,7 @@ P_TRANS = [
 | `prices.json` | CPI/PCE/PPI 24 月序列 + 分项 | PriceDecomp |
 | `expectations.json` | BEI 曲线 + Michigan + SPF | ExpectationsChart |
 | `drivers.json` | 驱动因子热力图数据 | DriversHeatmap |
-| `history.json` | Π 信号历史（90 日） | SignalTimeline |
+| `history.json` | IPS 信号历史（90 日） | SignalTimeline |
 
 示例 — `assets.json`:
 ```json
@@ -695,18 +695,18 @@ P_TRANS = [
 | 维度 | USD Monitor | Inflation Monitor |
 |------|-------------|-------------------|
 | 核心标的 | DXY | 通胀本身 + 四类资产 |
-| 公式 | γ = r_f + π_risk − cy + σ_alert | Π = P + E + D + F + N |
+| 公式 | γ = r_f + π_risk − cy + σ_alert | IPS = P + E + D + F + N |
 | FOMC | 有鹰鸽指数 | **复用** USDMonitor 的 FomcTimeline |
 | 输出 | BULLISH/NEUTRAL/BEARISH（单标的） | 四资产方向 + 情景剧本 |
 | 叙事 | 暂无 | **本看板首创** NLP 叙事强度 |
 | 财政 | 暂无（隐含在 cy） | **本看板首创** 独立 F 分项 |
-| 跨引用 | USD 看板可引用 Π 的 N 分项 | 通胀看板可引用 USD γ 作为外生输入 |
+| 跨引用 | USD 看板可引用 IPS 的 N 分项 | 通胀看板可引用 USD γ 作为外生输入 |
 
 ---
 
 ## 10. 验收标准
 
-1. 主页一屏内能看到 **Π 评分 + 当前通胀体制 + 四资产方向信号**（不刷即见）
+1. 主页一屏内能看到 **IPS 评分 + 当前通胀体制 + 四资产方向信号**（不刷即见）
 2. 五分项卡片内数字与子因子进度条一致，可点击下钻到原始序列图
 3. 情景剧本 Tab 可切换，四情景概率和 = 100%
 4. FOMC 时间线可展示最近 10 条事件 + 鹰鸽打分时序
@@ -720,7 +720,7 @@ P_TRANS = [
 ## 11. 设计风格
 
 - **主色**: `#0a0e1a` 深蓝黑（与 USDMonitor/GoldMonitor 统一）
-- **强调色**: 金色 `#fbbf24`（公式、Π 评分）
+- **强调色**: 金色 `#fbbf24`（公式、IPS 评分）
 - **体制色**: 🔵 `#3b82f6` / 🟢 `#10b981` / 🟡 `#eab308` / 🟠 `#f97316` / 🔴 `#ef4444`
 - **信号色**: Bullish `#10b981` / Neutral `#64748b` / Bearish `#ef4444`
 - **字体**: Inter（正文）+ JetBrains Mono（数据）
@@ -733,8 +733,8 @@ P_TRANS = [
 - 实时通胀（Truflation 分钟级接入）
 - 四资产的联动回测（组合净值 + Sharpe）
 - 用户自定义权重（让用户调整 P/E/D/F/N 的 w）
-- 通胀预警推送（Π 穿越阈值触发邮件/企微）
-- 与 GoldMonitor 的 SHAP 归因联动（把 Π 当做一个外生因子喂进 XGBoost）
+- 通胀预警推送（IPS 穿越阈值触发邮件/企微）
+- 与 GoldMonitor 的 SHAP 归因联动（把 IPS 当做一个外生因子喂进 XGBoost）
 - 小程序端完整实现
 
 ---

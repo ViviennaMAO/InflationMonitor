@@ -12,7 +12,7 @@ export function SignalTimeline({ data }: { data: SignalTimelineEntry[] }) {
   return (
     <div className="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
       <div className="flex items-center justify-between mb-3">
-        <h3 className="text-sm font-semibold text-slate-200">Π 信号历史时间线</h3>
+        <h3 className="text-sm font-semibold text-slate-200">IPS 信号历史时间线</h3>
         <span className="text-[10px] text-slate-500">近 7 次信号变化</span>
       </div>
       <div className="space-y-2.5">

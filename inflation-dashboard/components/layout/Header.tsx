@@ -10,9 +10,14 @@ export function Header({ score }: { score: InflationScore }) {
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6">
         {/* Row 1 */}
         <div className="flex items-center gap-3 h-11 flex-wrap">
-          <span className="text-[#fbbf24] font-mono text-sm font-semibold tracking-wider">
-            Π = P + E + D + F + N
+          <span
+            className="text-[#fbbf24] font-mono text-sm font-semibold tracking-wider cursor-help"
+            title="IPS = Inflation Pressure Score (通胀压力综合评分)"
+          >
+            IPS = P + E + D + F + N
           </span>
+          <span className="text-slate-600">·</span>
+          <span className="text-[10px] text-slate-500">Inflation Pressure Score</span>
           <span className="text-slate-600">·</span>
           <span className="text-xs text-slate-400">Inflation Monitor</span>
           <span className="text-slate-700 text-xs">v1.0</span>
@@ -25,7 +30,12 @@ export function Header({ score }: { score: InflationScore }) {
         <div className="flex items-center gap-4 h-12 border-t border-slate-800/60 flex-wrap">
           {/* Score */}
           <div className="flex items-center gap-2">
-            <span className="text-[10px] text-slate-500">Π</span>
+            <span
+              className="text-[10px] text-slate-500 cursor-help"
+              title="Inflation Pressure Score"
+            >
+              IPS
+            </span>
             <span className="text-xl font-mono font-semibold text-[#fbbf24]">
               {score.pi}
             </span>

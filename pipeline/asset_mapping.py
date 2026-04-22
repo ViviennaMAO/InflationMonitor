@@ -1,4 +1,4 @@
-"""Π → 四资产方向信号映射 (PRD §5.7)."""
+"""IPS → 四资产方向信号映射 (PRD §5.7)."""
 from __future__ import annotations
 from . import config
 
@@ -34,7 +34,7 @@ HEADLINES = {
     },
 }
 
-# 方向 → 置信度基准 (后续按 Π 偏离度动态调整)
+# 方向 → 置信度基准 (后续按 IPS 偏离度动态调整)
 DIR_BASE_CONF = {
     "BULLISH":  72, "NEU_BULL": 60, "NEUTRAL": 48, "NEU_BEAR": 58, "BEARISH":  68,
 }

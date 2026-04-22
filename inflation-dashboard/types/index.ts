@@ -1,6 +1,6 @@
 // ───────── 通胀体制 ─────────
 export type InflationRegime =
-  | 'reflation_surge'    // 🔴 再加速 Π ≥ 70
+  | 'reflation_surge'    // 🔴 再加速 IPS ≥ 70
   | 'sticky_inflation'   // 🟠 粘性通胀 55-70
   | 'goldilocks'         // 🟡 温和 35-55
   | 'disinflation'       // 🟢 回落 20-35

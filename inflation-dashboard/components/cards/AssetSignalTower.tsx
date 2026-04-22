@@ -8,7 +8,7 @@ export function AssetSignalTower({ data }: { data: AssetSignalBundle }) {
       <div className="flex items-center gap-3 mb-3">
         <div className="h-px flex-1 bg-slate-800" />
         <span className="text-xs text-slate-500 tracking-widest uppercase">
-          通胀 Π {data.pi_score} → 四资产信号塔
+          IPS {data.pi_score} → 四资产信号塔
         </span>
         <div className="h-px flex-1 bg-slate-800" />
       </div>

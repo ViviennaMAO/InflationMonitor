@@ -14,7 +14,7 @@ Page({
     regimeLabel: '--',
     regimeBadgeClass: 'badge-neutral',
     regimeEmoji: '',
-    // components Π bars
+    // components IPS bars
     components: [],
     // inflation type (diagnosis)
     typeLabel: '--',

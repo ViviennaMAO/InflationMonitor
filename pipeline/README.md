@@ -19,7 +19,7 @@ python -m pipeline.run_daily
 
 ```
 pipeline/output/
-├── score.json         # Π 综合评分 + 五分项
+├── score.json         # IPS 综合评分 + 五分项
 ├── components.json    # P/E/D/F/N 子因子明细 (前端 ComponentCard 直接消费)
 ├── assets.json        # 四资产方向信号
 ├── scenarios.json     # 四情景剧本 + 转移概率
@@ -35,7 +35,7 @@ inflation-dashboard/data/pipeline/   # 前端读取目录 (自动镜像)
 | `config.py`        | 权重、regime 阈值、FRED series / Yahoo ticker / 资产 β / Regime override |
 | `fetch_data.py`    | FRED HTTP 拉取 + Yahoo chart API; 无 API key 时优雅失败 |
 | `scoring.py`       | P/E/D/F/N 五分项评分；F/N 当前走 prior，后续接入爬虫/NLP |
-| `asset_mapping.py` | Π → 四资产方向 / 置信度 / 建议仓位 |
+| `asset_mapping.py` | IPS → 四资产方向 / 置信度 / 建议仓位 |
 | `scenarios.py`     | 四情景剧本 + 马尔可夫转移矩阵 |
 | `nlp_fomc.py`      | FOMC/发言鹰鸽打分编排器 — 有 `_source_text` 的条目交给 Claude (v1.1), 否则回落到静态 |
 | `nlp/`             | v1.1 NLP 层: `hawkdove.py` (结构化打分 + 缓存 rubric), `cache.py` (doc-hash 磁盘缓存), `client.py` (Anthropic SDK) |
@@ -63,6 +63,6 @@ Python 通过本地 HTTP 代理访问外网时，连续多次请求 FRED / Yahoo
 - [x] Claude 鹰鸽结构化打分 (Anthropic SDK + Pydantic + prompt cache) — `pipeline/nlp/hawkdove.py`
 - [ ] FOMC 声明 + 官员发言爬虫 (federalreserve.gov) — 把文档全文填进 `_source_text`
 - [ ] 新闻叙事指数 (GDELT 或自爬) + Google Trends
-- [ ] Π `delta_1d` / `delta_7d` 计算 (需要历史快照存储)
+- [ ] IPS `delta_1d` / `delta_7d` 计算 (需要历史快照存储)
 - [ ] GitHub Actions 日度定时运行 + 事件触发更新
 - [ ] 前端 API Route 改读 `data/pipeline/*.json`

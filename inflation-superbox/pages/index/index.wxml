@@ -9,13 +9,13 @@
     <view class="card" style="padding:20rpx 24rpx;">
       <view class="flex justify-between items-center">
         <view class="flex-col">
-          <text class="formula-strip text-sm">Π = P + E + D + F + N</text>
-          <text class="text-dim text-xs" style="margin-top:4rpx;">Inflation Monitor · v1.0</text>
+          <text class="formula-strip text-sm">IPS = P + E + D + F + N</text>
+          <text class="text-dim text-xs" style="margin-top:4rpx;">Inflation Pressure Score · 通胀压力评分</text>
         </view>
         <text class="text-dim text-xs">{{asOf}}</text>
       </view>
       <view class="flex items-center" style="margin-top:16rpx; gap:16rpx;">
-        <text class="text-dim text-xs">Π</text>
+        <text class="text-dim text-xs">IPS</text>
         <text class="text-gold font-bold text-xl font-mono">{{pi}}</text>
         <text class="text-dim text-xs">/100</text>
         <text class="{{delta1dClass}} text-xs font-mono">{{delta1d}}</text>
@@ -26,7 +26,7 @@
     <!-- Four-asset signal tower -->
     <view class="section-divider">
       <view class="line"></view>
-      <text class="label">Π → 四资产信号塔</text>
+      <text class="label">IPS → 四资产信号塔</text>
       <view class="line"></view>
     </view>
 
@@ -88,10 +88,10 @@
       </view>
     </view>
 
-    <!-- Π components breakdown -->
+    <!-- IPS components breakdown -->
     <view class="card">
       <view class="flex justify-between items-center mb-md">
-        <text class="card-title">Π 五分项</text>
+        <text class="card-title">IPS 五分项</text>
         <text class="text-gold text-xs formula-strip">P·E·D·F·N</text>
       </view>
       <view wx:for="{{components}}" wx:key="key" class="flex items-center gap-sm" style="margin-bottom:12rpx;">

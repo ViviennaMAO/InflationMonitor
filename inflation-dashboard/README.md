@@ -1,6 +1,6 @@
 # InflationMonitor · Dashboard
 
-通胀因子全景看板 · `Π = P + E + D + F + N` · 终点落到黄金 / 美元 / 美债 / 美股四类资产的方向信号 + 场景化剧本。
+通胀因子全景看板 · `IPS (Inflation Pressure Score) = P + E + D + F + N` · 终点落到黄金 / 美元 / 美债 / 美股四类资产的方向信号 + 场景化剧本。
 
 - 产品需求文档: [`../PRD_InflationMonitor_v1.0.md`](../PRD_InflationMonitor_v1.0.md)
 - 技术栈: Next.js 16 (App Router) + React 19 + Tailwind 4 + Recharts + SWR
@@ -19,7 +19,7 @@ npm run dev
 
 | 路径 | 模块 |
 |------|------|
-| `/` | 主看板：事件拦截 · 四资产信号塔 · Π 仪表盘 · 五分项卡 · 场景剧本 · FOMC 摘要 · 信号时间线 |
+| `/` | 主看板：事件拦截 · 四资产信号塔 · IPS 仪表盘 · 五分项卡 · 场景剧本 · FOMC 摘要 · 信号时间线 |
 | `/fomc` | FOMC 深度：声明 / 纪要 / 官员发言 + 鹰鸽指数 MA5 |
 | `/fiscal` | 财政脉冲：赤字/GDP · 财政支出 · TGA · 重大立法事件 |
 | `/narrative` | 叙事与媒体：热词云 · Google Trends · 社媒情绪 |

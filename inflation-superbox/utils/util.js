@@ -57,7 +57,7 @@ function hawkBadgeClass(s) {
 /* ═══ Delta arrow / color ═══ */
 function deltaClass(n) {
   if (n == null || isNaN(n)) return 'text-dim'
-  if (n > 0) return 'text-red'        // Π 涨 = 通胀压力↑ (用红表示)
+  if (n > 0) return 'text-red'        // IPS 涨 = 通胀压力↑ (用红表示)
   if (n < 0) return 'text-green'
   return 'text-dim'
 }

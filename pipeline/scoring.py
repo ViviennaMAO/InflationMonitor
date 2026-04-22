@@ -1,4 +1,4 @@
-"""Π 五分项评分引擎 — 对齐 PRD §5."""
+"""IPS 五分项评分引擎 — 对齐 PRD §5."""
 from __future__ import annotations
 from .utils import n100, regime_from_pi
 from . import config
@@ -135,7 +135,7 @@ def score_N(_d: dict) -> tuple[float, dict]:
     return score, detail
 
 
-# ── 综合 Π ─────────────────────────────────────────────────
+# ── 综合 IPS ───────────────────────────────────────────────
 def score_pi(d: dict) -> dict:
     P, pd_ = score_P(d)
     E, ed_ = score_E(d)
