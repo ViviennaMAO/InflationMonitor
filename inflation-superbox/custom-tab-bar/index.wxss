@@ -28,8 +28,8 @@
 }
 
 .tab-icon {
-  font-size: 44rpx;
-  line-height: 1;
+  width: 48rpx;
+  height: 48rpx;
   margin-bottom: 6rpx;
   /* Subtle lift for the active tab to feel "selected" */
   transition: transform 0.18s ease;
