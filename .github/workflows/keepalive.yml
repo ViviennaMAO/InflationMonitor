@@ -1,0 +1,69 @@
+name: Keepalive · Vercel Warm Ping
+
+# 每 5 分钟 ping 一次 Vercel API，避免 serverless 冷启动
+# 解决: SuperBox 小程序首次加载 request:fail timeout (Vercel 冷启动 5-10s + 4 并发栈式超时)
+#
+# 成本: ~10s × 288 runs/day × 30 = ~144 min/月，远在 GitHub Actions 免费额度 (2000 min) 内
+# 注: GitHub Actions cron 是 best-effort，繁忙时段可能延迟几分钟到 ~15 分钟
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+# 同时间只跑一个，避免堆积
+concurrency:
+  group: keepalive
+  cancel-in-progress: true
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Ping all API endpoints in parallel
+        env:
+          API_BASE: https://inflation-monitor-nine.vercel.app/api
+        run: |
+          set +e   # 即使个别端点失败也继续，避免一个慢端点中断整个保活
+          endpoints=(
+            score
+            components
+            assets
+            scenarios
+            diagnosis
+            fomc
+            fiscal
+            narrative
+            event-window
+            market-anchors
+            signal-timeline
+          )
+
+          # 并行 ping，每个 25s 上限
+          pids=()
+          declare -A times
+          for ep in "${endpoints[@]}"; do
+            (
+              t=$(curl -s -o /dev/null -w "%{http_code} %{time_total}" \
+                  --max-time 25 "$API_BASE/$ep")
+              echo "$ep -> $t"
+            ) &
+            pids+=($!)
+          done
+
+          # 等待全部完成
+          for pid in "${pids[@]}"; do
+            wait "$pid"
+          done
+
+          echo ""
+          echo "Keepalive complete at $(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Keepalive Ping" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Pinged \`inflation-monitor-nine.vercel.app\` at $(date -u +"%Y-%m-%d %H:%M UTC")" >> $GITHUB_STEP_SUMMARY
+          echo "Next ping: ~5 min (best-effort)" >> $GITHUB_STEP_SUMMARY

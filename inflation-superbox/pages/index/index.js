@@ -45,12 +45,12 @@ Page({
   async loadData() {
     this.setData({ loading: true, error: '' })
     try {
-      const [score, assets, diag, anchors] = await Promise.all([
-        api.fetchScore(),
-        api.fetchAssets(),
-        api.fetchDiagnosis(),
-        api.fetchMarketAnchors().catch(() => null),
-      ])
+      // Sequential to avoid 4× Vercel cold-starts stacking up in SuperBox IDE.
+      // Each call has built-in 30s timeout + one retry, so worst-case is bounded.
+      const score   = await api.fetchScore()
+      const assets  = await api.fetchAssets()
+      const diag    = await api.fetchDiagnosis()
+      const anchors = await api.fetchMarketAnchors().catch(() => null)
 
       // Components stacked bars
       const keyMeta = {
@@ -130,7 +130,13 @@ Page({
       })
     } catch (err) {
       console.error('index loadData failed', err)
-      this.setData({ loading: false, error: '加载失败: ' + (err && err.message || err) })
+      const msg = (err && (err.errMsg || err.message)) || String(err)
+      const hint = msg.indexOf('timeout') >= 0
+        ? '（API 冷启动超时，下拉刷新重试）'
+        : msg.indexOf('fail') >= 0
+        ? '（网络异常，请检查 IDE 域名校验/代理设置）'
+        : ''
+      this.setData({ loading: false, error: '加载失败: ' + msg + hint })
     }
   },
 })
