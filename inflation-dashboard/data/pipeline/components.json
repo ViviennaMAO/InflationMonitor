@@ -140,7 +140,7 @@
       {
         "key": "wti",
         "label": "WTI YoY",
-        "value": 64.95,
+        "value": 64.05,
         "unit": "%",
         "weight": 0.2,
         "score": 100.0,
@@ -176,7 +176,7 @@
       {
         "key": "dxy",
         "label": "DXY YoY",
-        "value": 0.62,
+        "value": 0.61,
         "unit": "%",
         "weight": 0.1,
         "score": 57.5,
